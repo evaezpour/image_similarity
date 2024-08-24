@@ -20,9 +20,9 @@ This project implements a web service that allows users to upload an image and r
 
 ### Step 1: Clone the Repository
 
-git clone https://github.com/yourusername/image-similarity-service.git
+git clone https://github.com/evaezpour/image_similarity
 
-cd image-similarity-service
+cd image_similarity
 
 ### Step 2: Install Dependencies
 If you plan to run the project locally (without Docker), install the necessary Python dependencies:
