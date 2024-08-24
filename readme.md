@@ -21,6 +21,7 @@ This project implements a web service that allows users to upload an image and r
 ### Step 1: Clone the Repository
 
 git clone https://github.com/yourusername/image-similarity-service.git
+
 cd image-similarity-service
 
 ### Step 2: Install Dependencies
@@ -43,7 +44,7 @@ docker build -t image_similarity_service .
 
 ### Step 6: Run the Docker Container
 
-If the features file is stored locally on your host machine, run the container with a mounted volume:
+If the "features.pkl" file is stored locally on your host machine, run the container with a mounted volume:
 
 docker run -p 5000:5000 -v D:/image_features:/app/image_features image_similarity_service
 
