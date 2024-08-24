@@ -54,7 +54,7 @@ docker build -t image_similarity_service .
 
 If the 'features.pkl' file is stored locally on your host machine, run the container with a mounted volume:
 
-docker run -p 5000:5000 -v D:/image_features:/app/image_features image_similarity_service
+docker run -p 5000:5000 -v D:/image_similarity/image_features:/app/image_features image_similarity_service
 
 ### Step 7: Access the Web Service
 Once the container is running, you can interact with the web service. The API provides an endpoint to upload images and retrieve similar images.
