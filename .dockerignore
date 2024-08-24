@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+.idea/
+build
+dist
+*.egg-info
+.DS_Store
+.git
+.gitignore
+.vscode
+raw_images/
+image_features/
+
+
