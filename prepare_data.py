@@ -2,8 +2,8 @@ import pandas as pd
 import requests
 import os
 from utils.feature_extraction import extract_features
-from utils.storage import save_features
-from config import DOWNLOAD_FOLDER, FEATURES_FILE
+from utils.storage import save_data
+from config import DOWNLOAD_FOLDER, FEATURES_FILE, MAP_FILE
 
 # Define the URL of your CSV file
 csv_url = 'https://xgen-interview-dataset.s3.amazonaws.com/valentino_links.csv'
@@ -22,12 +22,14 @@ def sanitize_filename(filename):
 
 # Download images and extract features
 features = {}
+image_name_to_url = {}
 failed_download = 0
 for index, row in df.iterrows():
     print(index)
     img_url = row['image_url'].strip()
     img_name = sanitize_filename(img_url.split("/")[-1].split("?")[0])  # Extract a clean image name
     img_name += f'_{index}'
+    image_name_to_url[f"{img_name}.jpg"] = img_url
     img_path = os.path.join(DOWNLOAD_FOLDER, f"{img_name}.jpg")
 
     try:
@@ -50,5 +52,6 @@ for index, row in df.iterrows():
 
 print(f"failed to download {failed_download} number of images")
 # Save the features to a file
-save_features(features, FEATURES_FILE)
+save_data(features, FEATURES_FILE)
+save_data(image_name_to_url, MAP_FILE)
 print(f"Features have been saved to {FEATURES_FILE}.")

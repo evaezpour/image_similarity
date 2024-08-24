@@ -12,5 +12,7 @@ dist
 .vscode
 raw_images/
 image_features/
+prepare_data.py
+utils/feature_extraction.py
 
 

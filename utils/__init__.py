@@ -1,5 +1,4 @@
 # utils/__init__.py
 
-from .feature_extraction import extract_features
 from .similarity import find_similar_images
-from .storage import load_features, save_features
+from .storage import load_data, save_data

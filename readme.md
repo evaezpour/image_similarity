@@ -8,7 +8,11 @@ This project implements a web service that allows users to upload an image and r
 
 - **Image Upload**: Users can upload an image via a POST request.
 - **Image Similarity**: The service returns the top N most similar images based on precomputed features.
-- **Lightweight Deployment**: The service is containerized using Docker for easy deployment.
+- **Lightweight Deployment**: The service is containerized using Docker for easy deployment. 
+The raw images and their extracted features are placed outside of the docker image. 
+- **Feature Extraction**: A pre-trained VGG network is used for feature extraction. 
+VGG is a strong and reliable option for feature extraction in image similarity tasks.
+- **Image Similarity metric**: Cosine similarity is used for similarity metric.
 
 ## Setup Instructions
 
@@ -30,11 +34,15 @@ If you plan to run the project locally (without Docker), install the necessary P
 pip install -r requirements.txt
 
 ### Step 3: Prepare the Features
-Download the raw images and precompute the features using the prepare_data.py script, and save them to a directory outside of the Docker image.
+Download the raw images and precompute the features, and save them to a directory outside of the Docker image:
+
+pip install tensorflow
+
+Run the 'prepare_data.py' file.
 
 ### Step 4: Running the project locally
 
-Run the app.py file. Go to Step 7 to interact with the web service. 
+Run the 'app.py' file. Go to Step 7 to interact with the web service. 
 
 ### Step 5: Build the Docker Image
 
@@ -44,7 +52,7 @@ docker build -t image_similarity_service .
 
 ### Step 6: Run the Docker Container
 
-If the "features.pkl" file is stored locally on your host machine, run the container with a mounted volume:
+If the 'features.pkl' file is stored locally on your host machine, run the container with a mounted volume:
 
 docker run -p 5000:5000 -v D:/image_features:/app/image_features image_similarity_service
 
